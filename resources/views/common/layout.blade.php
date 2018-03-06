@@ -23,7 +23,9 @@
         <li class="layui-nav-item"><a href="">社区</a></li>
     </ul>
 
-
+    @foreach($menu as $menu)
+        <p>{{$menu->menuName}}</p>
+    @endforeach
     @yield('content')
 
 

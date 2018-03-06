@@ -14,4 +14,4 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/practice', 'Home\PracticeController@practice_index');
+Route::get('/practice', 'PracticeController@practice_index');
