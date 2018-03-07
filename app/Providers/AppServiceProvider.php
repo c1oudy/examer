@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App\MenuModel as MenuModel;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -14,6 +15,11 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //
+        $menuModel = new MenuModel();
+        $menu = $menuModel->readMenu();
+        view()->composer('common.layout',function($view)use($menu){
+            $view->with('menu',$menu);
+        });
     }
 
     /**

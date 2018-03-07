@@ -4,33 +4,49 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="{{ URL::asset('/layui/css/layui.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('/css/common/index.css') }}">
     <script type="text/javascript"  src="{{ URL::asset('/layui/layui.js') }}"></script>
     <script type="text/javascript"  src="{{ URL::asset('/js/jquery.js') }}"></script>
 </head>
 <body>
+<div class="header">
+    <div class="header_top">
+        <div class="logo"><a href=""></a></div>
+        <div class="search">
+            <input type="text" name="search"  placeholder="请输入搜索内容" class="layui-input">
+            <button class="layui-btn layui-btn-sm layui-btn-primary">
+                <i class="layui-icon">&#xe615;</i>
+            </button>
+        </div>
+    </div>
     <ul class="layui-nav" lay-filter="">
-        <li class="layui-nav-item"><a href="javascript:;">最新活动</a></li>
-        <li class="layui-nav-item layui-this"><a href="javascript:;">产品</a></li>
-        <li class="layui-nav-item"><a href="javascript:;">大数据</a></li>
-        <li class="layui-nav-item">
-            <a href="javascript:;">解决方案</a>
-            <dl class="layui-nav-child"> <!-- 二级菜单 -->
-                <dd><a href="javascript:;">移动模块</a></dd>
-                <dd><a href="javascript:;">后台模版</a></dd>
-                <dd><a href="javascript:;">电商平台</a></dd>
-            </dl>
-        </li>
-        <li class="layui-nav-item"><a href="">社区</a></li>
+        <?php var_dump($menu) ?>
+        @foreach ($menu as $menu)
+            @if ($menu->parentId === '0')
+                <li class="layui-nav-item
+                    @if ($curentPage === $menu->name)
+                        layui-this
+                    @endif">
+                    <a href="javascript:;">
+                        {{$menu->menuName}}
+                    </a>
+                    <!-- 二级菜单 -->
+                    {{--<dl class="layui-nav-child"> --}}
+                        {{--<dd><a href="javascript:;">zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz</a></dd>--}}
+                    {{--</dl>--}}
+                </li>
+            @endif
+        @endforeach
     </ul>
-
-    @foreach($menu as $menu)
-        <p>{{$menu->menuName}}</p>
-    @endforeach
+</div>
+<div class="content">
     @yield('content')
-
-
-
+</div>
+<div class="footer">
     <p>尾部</p>
+</div>
+
+
 </body>
 <script>
     layui.use('element', function(){
