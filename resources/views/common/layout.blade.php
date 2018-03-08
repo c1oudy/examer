@@ -11,10 +11,10 @@
 <body>
 <div class="header">
     <div class="header_top">
-        <div class="logo"><a href=""></a></div>
+        <a href="{{ action('Home\IndexController@index') }}"><div class="logo"></div></a>
         <div class="search">
             <input type="text" name="search"  placeholder="请输入搜索内容" class="layui-input">
-            <button class="layui-btn layui-btn-sm layui-btn-primary">
+            <button class="layui-btn layui-btn-sm layui-btn-primary search_btn">
                 <i class="layui-icon">&#xe615;</i>
             </button>
         </div>
@@ -22,12 +22,11 @@
     <ul class="layui-nav" lay-filter="">
         <?php var_dump($menu) ?>
         @foreach ($menu as $menu)
-            @if ($menu->parentId === '0')
                 <li class="layui-nav-item
                     @if ($curentPage === $menu->name)
                         layui-this
                     @endif">
-                    <a href="javascript:;">
+                    <a href="{{ url("$menu->url") }}">
                         {{$menu->menuName}}
                     </a>
                     <!-- 二级菜单 -->
@@ -35,7 +34,6 @@
                         {{--<dd><a href="javascript:;">zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz</a></dd>--}}
                     {{--</dl>--}}
                 </li>
-            @endif
         @endforeach
     </ul>
 </div>

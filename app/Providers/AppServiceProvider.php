@@ -16,7 +16,7 @@ class AppServiceProvider extends ServiceProvider
     {
         //
         $menuModel = new MenuModel();
-        $menu = $menuModel->readMenu();
+        $menu = $menuModel->readTopMenu();
         view()->composer('common.layout',function($view)use($menu){
             $view->with('menu',$menu);
         });

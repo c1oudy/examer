@@ -20,4 +20,11 @@ class MenuModel extends Model
         Cache::put('menu',$menu,10);
         return $menu;
     }
+    public function readTopMenu(){
+        $menu = DB::table('menu')
+            ->orderBy('level','asc')
+            ->where('parentId','=',0)
+            ->get();
+        return $menu;
+    }
 }
