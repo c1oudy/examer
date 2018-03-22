@@ -14,7 +14,7 @@
                 <span class="order_icon">顺序练习</span>
                 <span class="random_icon">随机练习</span>
                 <span>分类练习</span>
-                <span>4</span>
+                <span>易错题</span>
             </div>
         </div>
         <div class="index_list_item">

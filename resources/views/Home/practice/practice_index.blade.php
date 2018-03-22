@@ -1,30 +1,23 @@
 @extends('common/layout')
 @section('content')
-    <div class="layui-carousel" id="banner">
-        <div carousel-item>
-            <div><img src="{{url('images/banner.jpg')}}" alt=""></div>
-            <div><img src="{{url('images/banner2.jpg')}}" alt=""></div>
-        </div>
-    </div>
-    <span class="index_title">实验安全知识教育</span>
-    <div class="index_list">
-        <div class="index_list_item">
-
-        </div>
-        <div class="index_list_item">
-
-        </div>
+    <div class="subject">
+        <p>100、驾驶机动车超车后立即开启右转向灯驶回原车道。</p>
+        <form class="layui-form layui-form-pane" action="">
+            <div class="layui-input-block">
+                <input type="radio" name="sex" value="男" title="男">
+                <input type="radio" name="sex" value="女" title="女">
+            </div>
+        </form>
     </div>
     <script>
-        layui.use('carousel', function(){
-            var carousel = layui.carousel;
-            //建造实例
-            carousel.render({
-                elem: '#banner'
-                ,width: '100%' //设置容器宽度
-                ,height: '400px'
-                ,arrow: 'always' //始终显示箭头
-                //,anim: 'updown' //切换动画方式
+        //Demo
+        layui.use('form', function(){
+            var form = layui.form;
+
+            //监听提交
+            form.on('submit(formDemo)', function(data){
+                layer.msg(JSON.stringify(data.field));
+                return false;
             });
         });
     </script>
